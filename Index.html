@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Tribute to Our Amazing Teachers</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, #173f67 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, #0b2947 0%, transparent 35%),
+        linear-gradient(135deg,#061827,#0b2947,#09223a);
+    color:white;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+/* Floating background lights */
+
+.light{
+    position:fixed;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:rgba(120,200,255,.08);
+    filter:blur(5px);
+    animation:floatLight 8s infinite ease-in-out;
+    pointer-events:none;
+}
+
+.light.one{
+    top:10%;
+    left:5%;
+}
+
+.light.two{
+    bottom:10%;
+    right:5%;
+    animation-delay:2s;
+}
+
+.light.three{
+    top:50%;
+    right:20%;
+    animation-delay:4s;
+}
+
+@keyframes floatLight{
+    50%{
+        transform:translateY(-35px) translateX(20px);
+    }
+}
+
+/* Main container */
+
+.container{
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+
+/* Pages */
+
+.page{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(.96) translateY(20px);
+    transition:.7s ease;
+}
+
+.page.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1) translateY(0);
+}
+
+/* General card */
+
+.card{
+    width:min(650px,94%);
+    text-align:center;
+    padding:50px 30px;
+    border:1px solid rgba(170,220,255,.25);
+    border-radius:32px;
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(18px);
+    box-shadow:0 25px 80px rgba(0,0,0,.35);
+}
+
+/* Opening */
+
+.small-title{
+    font-size:12px;
+    letter-spacing:5px;
+    color:#9edaff;
+    margin-bottom:20px;
+}
+
+h1{
+    font-family:Georgia,serif;
+    font-size:52px;
+    line-height:1.1;
+    color:#eaf7ff;
+}
+
+.subtitle{
+    margin-top:22px;
+    color:#b8d4e8;
+    font-size:17px;
+    line-height:1.7;
+}
+
+/* BIG TULIPS */
+
+.tulips{
+    font-size:72px;
+    letter-spacing:12px;
+    margin-bottom:25px;
+    animation:tulipFloat 3s ease-in-out infinite;
+    filter:drop-shadow(0 8px 15px rgba(0,0,0,.3));
+}
+
+@keyframes tulipFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+/* Buttons */
+
+button{
+    margin-top:30px;
+    padding:14px 30px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(135deg,#8ed8ff,#4c9ed1);
+    color:#062038;
+    font-weight:bold;
+    font-size:14px;
+    letter-spacing:1px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(65,160,220,.25);
+    transition:.3s ease;
+}
+
+button:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 15px 35px rgba(65,160,220,.4);
+}
+
+/* Page 2 */
+
+.question{
+    font-family:Georgia,serif;
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.choices{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* Page 3 */
+
+.quote{
+    font-family:Georgia,serif;
+    font-size:28px;
+    line-height:1.5;
+    color:#dff3ff;
+}
+
+.quote-mark{
+    font-size:70px;
+    color:#75c9f5;
+    line-height:.5;
+}
+
+/* Page 4 */
+
+.message-box{
+    margin-top:25px;
+    padding:25px;
+    border-radius:20px;
+    background:rgba(120,200,255,.08);
+    border:1px solid rgba(150,220,255,.18);
+    color:#c9dfed;
+    line-height:1.8;
+    display:none;
+    animation:messageIn .7s ease;
+}
+
+@keyframes messageIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Invitation */
+
+.invitation-card{
+    width:min(560px,94%);
+    padding:45px 30px;
+    text-align:center;
+    position:relative;
+    background:linear-gradient(145deg,#ffffff,#eef8ff);
+    border-radius:35px;
+    border:3px solid #b5d9f3;
+    box-shadow:0 25px 70px rgba(30,80,120,.25);
+    animation:invitationIn .8s ease;
+    overflow:hidden;
+    color:#183b59;
+}
+
+.invitation-card::before,
+.invitation-card::after{
+    content:"";
+    position:absolute;
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    background:#d7edff;
+    opacity:.5;
+}
+
+.invitation-card::before{
+    top:-70px;
+    left:-70px;
+}
+
+.invitation-card::after{
+    bottom:-70px;
+    right:-70px;
+}
+
+@keyframes invitationIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.flower-top{
+    position:relative;
+    z-index:2;
+    font-size:45px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+    animation:flowerFloat 2.5s ease-in-out infinite;
+}
+
+.invitation-label{
+    position:relative;
+    z-index:2;
+    color:#4d8bbd;
+    font-size:11px;
+    letter-spacing:4px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.invitation-card h2{
+    position:relative;
+    z-index:2;
+    font-family:Georgia,serif;
+    font-size:39px;
+    line-height:1.15;
+    color:#183b59;
+    margin:10px 0 20px;
+}
+
+.line{
+    position:relative;
+    z-index:2;
+    width:70px;
+    height:2px;
+    background:#73abd5;
+    margin:0 auto 25px;
+}
+
+.invite-text{
+    position:relative;
+    z-index:2;
+    max-width:430px;
+    margin:auto;
+    color:#61788d;
+    font-size:16px;
+    line-height:1.8;
+}
+
+.event-info{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+    margin:30px 0;
+}
+
+.event-info div{
+    padding:17px 8px;
+    border-radius:16px;
+    background:#e7f4ff;
+    border:1px solid #c8e3f7;
+}
+
+.event-info span{
+    display:block;
+    font-size:9px;
+    letter-spacing:2px;
+    color:#5794c3;
+    margin-bottom:7px;
+}
+
+.event-info strong{
+    font-size:13px;
+    color:#284e6d;
+}
+
+.closing{
+    position:relative;
+    z-index:2;
+    font-family:Georgia,serif;
+    font-style:italic;
+    color:#52718b;
+    margin:20px 0;
+}
+
+.invitation-card button{
+    position:relative;
+    z-index:2;
+}
+
+/* Final page */
+
+.final-tulips{
+    font-size:60px;
+    margin-bottom:20px;
+    animation:tulipFloat 3s infinite;
+}
+
+.final-title{
+    font-family:Georgia,serif;
+    font-size:48px;
+}
+
+.final-text{
+    margin-top:20px;
+    color:#bcd6e7;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.signature{
+    margin-top:30px;
+    font-family:Georgia,serif;
+    font-style:italic;
+    color:#8ed8ff;
+    font-size:18px;
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    h1{
+        font-size:38px;
+    }
+
+    .question{
+        font-size:34px;
+    }
+
+    .quote{
+        font-size:23px;
+    }
+
+    .tulips{
+        font-size:55px;
+        letter-spacing:5px;
+    }
+
+    .card{
+        padding:40px 22px;
+    }
+
+    .invitation-card{
+        padding:35px 20px;
+    }
+
+    .invitation-card h2{
+        font-size:32px;
+    }
+
+    .event-info{
+        grid-template-columns:1fr;
+    }
+
+    .event-info div{
+        padding:13px;
+    }
+
+    .flower-top{
+        font-size:38px;
+    }
+
+    .final-title{
+        font-size:37px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="light one"></div>
+<div class="light two"></div>
+<div class="light three"></div>
+
+<div class="container">
+
+    <!-- PAGE 1 -->
+
+    <section class="page active">
+
+        <div class="card">
+
+            <div class="tulips">
+                🌷 🌷 🌷
+            </div>
+
+            <div class="small-title">
+                A LITTLE SURPRISE
+            </div>
+
+            <h1>
+                A Tribute To<br>
+                Our Amazing Teachers
+            </h1>
+
+            <p class="subtitle">
+                Some people teach lessons.<br>
+                Some people leave a lasting impact.
+            </p>
+
+            <button onclick="nextPage()">
+                Begin The Journey
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 2 -->
+
+    <section class="page">
+
+        <div class="card">
+
+            <div class="small-title">
+                ONE QUESTION
+            </div>
+
+            <div class="question">
+                Are You Ready?
+            </div>
+
+            <p class="subtitle">
+                There is a little message waiting
+                especially for the teachers who inspire us.
+            </p>
+
+            <div class="choices">
+
+                <button onclick="nextPage()">
+                    YES, I AM
+                </button>
+
+                <button onclick="nextPage()">
+                    OF COURSE
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 3 -->
+
+    <section class="page">
+
+        <div class="card">
+
+            <div class="quote-mark">
+                “
+            </div>
+
+            <div class="quote">
+                A great teacher doesn't simply teach.
+                They inspire, encourage and help us
+                believe in ourselves.
+            </div>
+
+            <button onclick="nextPage()">
+                CONTINUE
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 4 -->
+
+    <section class="page">
+
+        <div class="card">
+
+            <div class="small-title">
+                FROM OUR HEARTS
+            </div>
+
+            <h1 style="font-size:42px;">
+                Thank You
+            </h1>
+
+            <p class="subtitle">
+                For every lesson,
+                every correction,
+                every word of encouragement,
+                and every moment you chose to believe in us.
+            </p>
+
+            <button onclick="showMessage()">
+                READ OUR MESSAGE
+            </button>
+
+            <div class="message-box" id="message">
+
+                Your patience has shaped our journey.
+                Your guidance has made difficult things
+                feel possible.
+
+                <br><br>
+
+                We may forget some lessons with time,
+                but we will never forget the teachers
+                who made a difference.
+
+                <br><br>
+
+                <strong>
+                    Thank you for being a part of our story.
+                </strong>
+
+            </div>
+
+            <button id="continueBtn"
+                    onclick="nextPage()"
+                    style="display:none;">
+                CONTINUE
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 5 : INVITATION -->
+
+    <section class="page">
+
+        <div class="invitation-card">
+
+            <div class="flower-top">
+                🌷 🌷 🌷
+            </div>
+
+            <div class="invitation-label">
+                YOU ARE WARMLY INVITED
+            </div>
+
+            <h2>
+                A Special Day<br>
+                For Special Teachers
+            </h2>
+
+            <div class="line"></div>
+
+            <p class="invite-text">
+                With heartfelt gratitude and appreciation,
+                we invite you to join us for a beautiful
+                celebration dedicated to the teachers
+                who inspire us every day.
+            </p>
+
+            <div class="event-info">
+
+                <div>
+                    <span>DATE</span>
+                    <strong>____________</strong>
+                </div>
+
+                <div>
+                    <span>TIME</span>
+                    <strong>____________</strong>
+                </div>
+
+                <div>
+                    <span>VENUE</span>
+                    <strong>____________</strong>
+                </div>
+
+            </div>
+
+            <p class="closing">
+                Your presence will make this celebration
+                even more special.
+            </p>
+
+            <button onclick="nextPage()">
+                ACCEPT OUR INVITATION ♡
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAGE 6 -->
+
+    <section class="page">
+
+        <div class="card">
+
+            <div class="final-tulips">
+                🌷 🌷 🌷
+            </div>
+
+            <div class="small-title">
+                WITH GRATITUDE
+            </div>
+
+            <div class="final-title">
+                Thank You,<br>
+                Amazing Teachers
+            </div>
+
+            <p class="final-text">
+                For teaching us, guiding us,
+                encouraging us and helping us
+                become better every day.
+
+                <br><br>
+
+                Your efforts matter.
+                Your words matter.
+                And the difference you make
+                will always matter.
+            </p>
+
+            <div class="signature">
+                With love & gratitude
+            </div>
+
+            <button onclick="restart()">
+                START AGAIN
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+let currentPage = 0;
+
+const pages = document.querySelectorAll(".page");
+
+function nextPage(){
+
+    if(currentPage < pages.length - 1){
+
+        pages[currentPage].classList.remove("active");
+
+        currentPage++;
+
+        pages[currentPage].classList.add("active");
+
+    }
+
+}
+
+function showMessage(){
+
+    document.getElementById("message").style.display = "block";
+
+    document.getElementById("continueBtn").style.display = "inline-block";
+
+}
+
+function restart(){
+
+    pages[currentPage].classList.remove("active");
+
+    currentPage = 0;
+
+    pages[currentPage].classList.add("active");
+
+}
+
+</script>
+
+</body>
+  </html>
